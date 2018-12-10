@@ -76,6 +76,38 @@ trait ArrayCommonFunctionsProvider
                     ],
                 ],
             ],
+            'group-by-2-keys' => [
+                'params' => [
+                    'array' => $sampleArray,
+                    'keys' => ['key1', 'key2'],
+                ],
+                'expected' => [
+                    '1_###_2' => [
+                        [
+                            'key1' => 1,
+                            'key2' => 2,
+                            'key3' => 3,
+                        ],
+                        [
+                            'key1' => 1,
+                            'key2' => 2,
+                            'key3' => 4,
+                        ],
+                        [
+                            'key1' => 1,
+                            'key2' => 2,
+                            'key3' => 6,
+                        ],
+                    ],
+                    '2_###_2' => [
+                        [
+                            'key1' => 2,
+                            'key2' => 2,
+                            'key3' => 6,
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }
