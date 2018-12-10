@@ -30,4 +30,16 @@ class ArrayCommonFunctionsTest extends TestCase
             $this->assertEquals($expected, $e->getMessage());
         }
     }
+
+    /**
+     * @param $array
+     * @param $expected
+     *
+     * @dataProvider isAssocArrayProvider
+     */
+    public function testIsAssocArray($array, $expected)
+    {
+        $actual = ArrayCommonFunctions::isAssocArray($array);
+        $this->assertEquals($expected, $actual);
+    }
 }

@@ -76,4 +76,14 @@ class ArrayCommonFunctions
 
         return $result;
     }
+
+    /**
+     * @param $array
+     *
+     * @return bool
+     */
+    public static function isAssocArray($array)
+    {
+        return is_array($array) && array_diff_key($array, array_keys(array_keys($array)));
+    }
 }

@@ -110,4 +110,43 @@ trait ArrayCommonFunctionsProvider
             ],
         ];
     }
+
+    /**
+     * @return array
+     */
+    public function isAssocArrayProvider()
+    {
+        return [
+            'string' => [
+                'array' => 'str',
+                'expected' => false,
+            ],
+            'int' => [
+                'array' => 1,
+                'expected' => false,
+            ],
+            'indexed-array' => [
+                'array' => [1, 2, 3, 4],
+                'expected' => false,
+            ],
+            'assoc-array' => [
+                'array' => [
+                    'key1' => 1,
+                    'key2' => 2,
+                ],
+                'expected' => true,
+            ],
+            'multidimensional-array' => [
+                'array' => [
+                    [
+                        'key1' => 1,
+                    ],
+                    [
+                        'key1' => 2,
+                    ],
+                ],
+                'expected' => false,
+            ],
+        ];
+    }
 }
