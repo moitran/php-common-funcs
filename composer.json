@@ -1,0 +1,28 @@
+{
+    "name": "moitran/php-common-funs",
+    "description": "Writing useful common function in php",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "moitran",
+            "email": "moitran92@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "MoiTran\\CommonFunctions\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MoiTran\\CommonFunctions\\Tests\\": "tests/"
+        }
+    }
+}
