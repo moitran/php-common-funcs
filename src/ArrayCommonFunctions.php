@@ -8,6 +8,9 @@ namespace MoiTran\CommonFunctions;
  */
 class ArrayCommonFunctions
 {
+    const LOWER_CASE_FUNC = 'strtolower';
+    const UPPER_CASE_FUNC = 'strtoupper';
+
     /**
      * Group items in array by values of keys
      *
@@ -84,6 +87,39 @@ class ArrayCommonFunctions
      */
     public static function isAssocArray($array)
     {
-        return is_array($array) && array_diff_key($array, array_keys(array_keys($array)));
+        if (!is_array($array) || count($array) !== count($array, COUNT_RECURSIVE)) {
+            return false;
+        }
+
+        return array_keys($array) !== range(0, count($array) - 1);
+    }
+
+    /**
+     * @param $array
+     *
+     * @return bool
+     */
+    public static function isNumericArray($array)
+    {
+        if (!is_array($array) || count($array) !== count($array, COUNT_RECURSIVE)) {
+            return false;
+        }
+
+        return array_keys($array) === range(0, count($array) - 1);
+    }
+
+    /**
+     * @param $array
+     * @param string $func
+     *
+     * @return array
+     */
+    public static function convertLowerUpperCase($array, $func = self::LOWER_CASE_FUNC)
+    {
+        if (self::isAssocArray($array) || self::isNumericArray($array)) {
+            return array_map($func, $array);
+        }
+
+        return $array;
     }
 }
