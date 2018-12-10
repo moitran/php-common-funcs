@@ -65,4 +65,20 @@ class ArrayCommonFunctionsTest extends TestCase
         $actual = ArrayCommonFunctions::convertLowerUpperCase($params['array'], $params['func']);
         $this->assertEquals($expected, $actual);
     }
+
+    /**
+     * @param $params
+     * @param $expected
+     *
+     * @dataProvider sortByProvider
+     */
+    public function testSortBy($params, $expected)
+    {
+        try {
+            $actual = ArrayCommonFunctions::sortBy($params['array'], $params['keys'], $params['sortType']);
+            $this->assertEquals($expected, $actual);
+        } catch (\Exception $e) {
+            $this->assertEquals($expected, $e->getMessage());
+        }
+    }
 }

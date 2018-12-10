@@ -9,9 +9,6 @@
    <php>
    </php>
 
-   <testsuites>
-   </testsuites>
-
    <filter>
        <whitelist>
            <directory>./src/</directory>

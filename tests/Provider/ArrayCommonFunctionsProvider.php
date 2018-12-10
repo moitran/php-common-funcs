@@ -330,4 +330,148 @@ trait ArrayCommonFunctionsProvider
             ],
         ];
     }
+
+    /**
+     * @return array
+     */
+    public function sortByProvider()
+    {
+        $array = [
+            [
+                'id' => 1,
+                'name' => 'a',
+                'point' => 10,
+            ],
+            [
+                'id' => 1,
+                'name' => 'a',
+                'point' => 14,
+            ],
+            [
+                'id' => 3,
+                'name' => 'c',
+                'point' => 11,
+            ],
+            [
+                'id' => 2,
+                'name' => 'b',
+                'point' => 12,
+            ],
+            [
+                'id' => 2,
+                'name' => 'b',
+                'point' => 14,
+            ],
+            [
+                'id' => 4,
+                'name' => 'a',
+                'point' => 10,
+            ],
+        ];
+
+        return [
+            'key-is-not-an-numeric-array' => [
+                'params' => [
+                    'array' => $array,
+                    'keys' => ['test' => [1, 2, 3]],
+                    'sortType' => 'ASC',
+                ],
+                'expected' => 'keys must be an numeric array',
+            ],
+            'array-is-not-multidimensional-array' => [
+                'params' => [
+                    'array' => array_merge($array, ['test']),
+                    'keys' => ['id'],
+                    'sortType' => 'ASC',
+                ],
+                'expected' => 'array must be a multidimensional array',
+            ],
+            'not-exist-key-in-array' => [
+                'params' => [
+                    'array' => $array,
+                    'keys' => ['test'],
+                    'sortType' => 'ASC',
+                ],
+                'expected' => 'item in array does\'t exist key: test',
+            ],
+            'sort-by-one-key' => [
+                'params' => [
+                    'array' => $array,
+                    'keys' => ['id'],
+                    'sortType' => 'ASC',
+                ],
+                'expected' => [
+                    [
+                        'id' => 1,
+                        'name' => 'a',
+                        'point' => 10,
+                    ],
+                    [
+                        'id' => 1,
+                        'name' => 'a',
+                        'point' => 14,
+                    ],
+                    [
+                        'id' => 2,
+                        'name' => 'b',
+                        'point' => 12,
+                    ],
+                    [
+                        'id' => 2,
+                        'name' => 'b',
+                        'point' => 14,
+                    ],
+                    [
+                        'id' => 3,
+                        'name' => 'c',
+                        'point' => 11,
+                    ],
+                    [
+                        'id' => 4,
+                        'name' => 'a',
+                        'point' => 10,
+                    ],
+                ]
+            ],
+            'sort-by-many-key' => [
+                'params' => [
+                    'array' => $array,
+                    'keys' => ['point', 'name', 'id'],
+                    'sortType' => 'DESC',
+                ],
+                'expected' => [
+                    [
+                        'id' => 1,
+                        'name' => 'a',
+                        'point' => 14,
+                    ],
+                    [
+                        'id' => 2,
+                        'name' => 'b',
+                        'point' => 14,
+                    ],
+                    [
+                        'id' => 2,
+                        'name' => 'b',
+                        'point' => 12,
+                    ],
+                    [
+                        'id' => 3,
+                        'name' => 'c',
+                        'point' => 11,
+                    ],
+                    [
+                        'id' => 1,
+                        'name' => 'a',
+                        'point' => 10,
+                    ],
+                    [
+                        'id' => 4,
+                        'name' => 'a',
+                        'point' => 10,
+                    ],
+                ],
+            ],
+        ];
+    }
 }

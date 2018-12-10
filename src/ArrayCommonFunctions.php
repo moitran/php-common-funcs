@@ -122,4 +122,44 @@ class ArrayCommonFunctions
 
         return $array;
     }
+
+    /**
+     * @param array $array
+     * @param array $keys
+     * @param string $sortType
+     *
+     * @return array
+     * @throws \Exception
+     */
+    public static function sortBy(array $array, array $keys, $sortType = 'ASC')
+    {
+        if (!self::isNumericArray($keys)) {
+            throw new \Exception('keys must be an numeric array');
+        }
+
+        $sortFunc = function ($a, $b) use ($keys, $sortType) {
+            if (!is_array($a) || !is_array($b)) {
+                throw new \Exception('array must be a multidimensional array');
+            }
+            foreach ($keys as $key) {
+                if (!isset($a[$key]) || !isset($b[$key])) {
+                    throw new \Exception("item in array does't exist key: $key");
+                }
+
+                $a = $a[$key];
+                $b = $b[$key];
+                if ($a == $b) { // value is equal -> sort by key
+                    return 0;
+                }
+                if ($sortType === "DESC") {
+                    return $a > $b ? -1 : 1;
+                } else {
+                    return $a < $b ? -1 : 1;
+                }
+            }
+        };
+        usort($array, $sortFunc);
+
+        return $array;
+    }
 }
