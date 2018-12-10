@@ -9,7 +9,7 @@ namespace MoiTran\CommonFunctions;
 class ArrayCommonFunctions
 {
     /**
-     * Group items by keys has same value
+     * Group items in array by values of keys
      *
      * @param array $array
      * @param array $keys List keys
