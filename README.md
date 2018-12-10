@@ -1,2 +1,2 @@
 # php-common-funs
-Writing useful common function in php
+Writing useful common functions in php
