@@ -11,6 +11,13 @@ class ArrayCommonFunctions
     const LOWER_CASE_FUNC = 'strtolower';
     const UPPER_CASE_FUNC = 'strtoupper';
 
+    const GROUP_ITEMS_BY_KEYS_FUNC = 'groupItemsByKeys';
+    const IS_ASSOC_ARRAY_FUNC = 'isAssocArray';
+    const IS_NUMERIC_ARRAY_FUNC = 'isNumericArray';
+    const CONVERT_LOWER_UPPER_CASE_FUNC = 'convertLowerUpperCase';
+    const SORT_BY_FUNC = 'sortBy';
+
+
     /**
      * Group items in array by values of keys
      *
