@@ -9,6 +9,8 @@ namespace MoiTran\CommonFunctions;
 class DateCommonFunctions
 {
     /**
+     * @codeCoverageIgnore
+     *
      * @param string $format
      *
      * @return false|string
@@ -19,6 +21,7 @@ class DateCommonFunctions
     }
 
     /**
+     * @codeCoverageIgnore
      * @return int
      */
     public static function getNow()
@@ -32,7 +35,7 @@ class DateCommonFunctions
      *
      * @return string
      */
-    public static function format(string $dateStr, string $format)
+    public static function format(string $dateStr, string $format = 'Y-m-d H:i:s')
     {
         $date = new \DateTime($dateStr);
 
@@ -138,29 +141,31 @@ class DateCommonFunctions
 
     /**
      * @param string $dateStr
+     * @param string $currentYear
      *
      * @return string
      */
-    public static function getAge(string $dateStr)
+    public static function getAge(string $dateStr, $currentYear = '')
     {
-        $date = new \DateTime($dateStr);
+        $date = new \DateTime(date('Y-m-d', strtotime($dateStr)));
         $year = $date->format('Y');
-        $currentYear = (new \DateTime())->format('Y');
+        $currentYear = $currentYear == '' ? self::getCurrentTime('Y') : $currentYear;
 
         return $currentYear - $year;
     }
 
     /**
      * @param string $dateStr
+     * @param string $currentDateTime
      *
      * @return string
      */
-    public static function niceTime(string $dateStr)
+    public static function niceTime(string $dateStr, $currentDateTime = '')
     {
         $periods = ['second', 'minute', 'hour', 'day', 'week', 'month', 'year', 'decade'];
         $lengths = ['60', '60', '24', '7', '4.35', '12', '10'];
 
-        $now = self::getNow();
+        $now = $currentDateTime == '' ? self::getNow() : strtotime($currentDateTime);
         $unixDate = strtotime($dateStr);
 
         // check validity of date
@@ -169,7 +174,7 @@ class DateCommonFunctions
         }
 
         // is it future date or past date
-        if ($now > $unixDate && $now - $unixDate <= 60) {
+        if ($now >= $unixDate && $now - $unixDate <= 60) {
             return 'just now';
         } elseif ($now > $unixDate) {
             $difference = $now - $unixDate;
