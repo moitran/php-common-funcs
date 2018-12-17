@@ -3,3 +3,12 @@ php:
   - '7.0'
   - '7.1'
   - '7.2'
+before_script:
+  - travis_retry composer self-update
+  - travis_retry composer install --no-interaction --prefer-source --dev
+
+script:
+  - vendor/bin/phpunit --coverage-clover=coverage.xml
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -t f2992d03-342b-4cc4-b223-e6a5b1acf174
