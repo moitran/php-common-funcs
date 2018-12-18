@@ -4,13 +4,13 @@ namespace MoiTran\CommonFunctions\Tests;
 
 use MoiTran\CommonFunctions\ArrayCommonFunctions;
 use MoiTran\CommonFunctions\Tests\Provider\ArrayCommonFunctionsProvider;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Class ArrayCommonFunctionsTest
- * @package MoiTran\Test
+ * @package MoiTran\CommonFunctions\Tests
+ * @group ArrayCommons
  */
-class ArrayCommonFunctionsTest extends TestCase
+class ArrayCommonFunctionsTest extends BaseUnit
 {
     use ArrayCommonFunctionsProvider;
 

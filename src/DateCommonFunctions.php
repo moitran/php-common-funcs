@@ -8,9 +8,17 @@ namespace MoiTran\CommonFunctions;
  */
 class DateCommonFunctions
 {
+    const GET_CURRENT_TIME_FUNC = 'getCurrentTime';
+    const GET_NOW_FUNC = 'getNow';
+    const FORMAT_FUNC = 'format';
+    const GET_RANGE_DATE_FUNC = 'getListRangeDate';
+    const GET_PREVIOUS_DATE_FUNC = 'getPreviousDate';
+    const GET_PREVIOUS_DATE_RANGE_FUNC = 'getPreviousDateRange';
+    const GET_TIME_BETWEEN_TWO_DATE_FUNC = 'getTimeBetweenTwoDate';
+    const GET_AGE_FUNC = 'getAge';
+    const NICE_TIME_FUNC = 'niceTime';
+
     /**
-     * @codeCoverageIgnore
-     *
      * @param string $format
      *
      * @return false|string
@@ -21,7 +29,6 @@ class DateCommonFunctions
     }
 
     /**
-     * @codeCoverageIgnore
      * @return int
      */
     public static function getNow()
@@ -76,7 +83,7 @@ class DateCommonFunctions
      *
      * @return string
      */
-    public static function getPreviousDates(string $dateStr, int $previousNumber = 1, string $format = 'Y-m-d')
+    public static function getPreviousDate(string $dateStr, int $previousNumber = 1, string $format = 'Y-m-d')
     {
         $date = new \DateTime($dateStr);
         $date->modify("- $previousNumber days");
