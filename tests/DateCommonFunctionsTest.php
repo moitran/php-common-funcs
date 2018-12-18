@@ -71,20 +71,20 @@ class DateCommonFunctionsTest extends BaseUnit
      * @param $params
      * @param $expected
      *
-     * @dataProvider getPreviousDatesProvider
+     * @dataProvider getPreviousDateProvider
      * @throws \Exception
      */
-    public function testGetPreviousDates($params, $expected)
+    public function testGetPreviousDate($params, $expected)
     {
-        $actual = DateCommonFunctions::getPreviousDates($params['dateStr']);
+        $actual = DateCommonFunctions::getPreviousDate($params['dateStr']);
         if (isset($params['previousNumber']) && isset($params['format'])) {
-            $actual = DateCommonFunctions::getPreviousDates(
+            $actual = DateCommonFunctions::getPreviousDate(
                 $params['dateStr'],
                 $params['previousNumber'],
                 $params['format']
             );
         } elseif (isset($params['previousNumber'])) {
-            $actual = DateCommonFunctions::getPreviousDates(
+            $actual = DateCommonFunctions::getPreviousDate(
                 $params['dateStr'],
                 $params['previousNumber']
             );

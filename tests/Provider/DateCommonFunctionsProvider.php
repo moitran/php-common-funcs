@@ -137,7 +137,7 @@ trait DateCommonFunctionsProvider
     /**
      * @return array
      */
-    public static function getPreviousDatesProvider()
+    public static function getPreviousDateProvider()
     {
         return [
             'default-params' => [
