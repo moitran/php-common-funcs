@@ -32,7 +32,7 @@ $ composer require moitran/php-common-funcs
     * **getTimeBetweenTwoDate** Return number of Seconds (S), Minutes (M), Hours (H) or Days (D) between two dates.
     * **getAge** Return age by date of birth.
     * **niceTime** Return nice time format.
-## Best practice to use
+## Best practice to use (*IMO)
 All functions in this package have static method so that if we call functions redirect like this way. It will be so hard to write the phpunit test code.  
 ```php
 
