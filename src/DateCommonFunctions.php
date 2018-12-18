@@ -8,9 +8,10 @@ namespace MoiTran\CommonFunctions;
  */
 class DateCommonFunctions
 {
+    const GET_CURRENT_TIME_FUNC = 'getCurrentTime';
+    const GET_NOW_FUNC = 'getNow';
+
     /**
-     * @codeCoverageIgnore
-     *
      * @param string $format
      *
      * @return false|string
@@ -21,7 +22,6 @@ class DateCommonFunctions
     }
 
     /**
-     * @codeCoverageIgnore
      * @return int
      */
     public static function getNow()
