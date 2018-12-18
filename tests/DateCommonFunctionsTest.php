@@ -4,15 +4,31 @@ namespace MoiTran\CommonFunctions\Tests;
 
 use MoiTran\CommonFunctions\DateCommonFunctions;
 use MoiTran\CommonFunctions\Tests\Provider\DateCommonFunctionsProvider;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Class DateCommonFunctionsTest
  * @package MoiTran\CommonFunctions\Tests
+ * @group DateCommons
  */
-class DateCommonFunctionsTest extends TestCase
+class DateCommonFunctionsTest extends BaseUnit
 {
     use DateCommonFunctionsProvider;
+
+    public function testGetCurrentTime()
+    {
+        global $mockTimeCreate, $mockTimeValue;
+        $mockTimeValue = '1545113845';
+        $mockTimeCreate = true;
+        $this->assertEquals('2018-12-18 06:17:25', DateCommonFunctions::getCurrentTime('Y-m-d H:i:s'));
+    }
+
+    public function testGetNow()
+    {
+        global $mockTimeCreate, $mockTimeValue;
+        $mockTimeValue = '1545113845';
+        $mockTimeCreate = true;
+        $this->assertEquals('1545113845', DateCommonFunctions::getNow());
+    }
 
     /**
      * @param $params
@@ -134,11 +150,19 @@ class DateCommonFunctionsTest extends TestCase
     /**
      * @param $params
      * @param $expected
+     *
      * @dataProvider niceTimeProvider
      */
     public function testNiceTime($params, $expected)
     {
         $actual = DateCommonFunctions::niceTime($params['dateStr'], $params['currentDateTime']);
         $this->assertEquals($expected, $actual);
+    }
+
+    public function tearDown()
+    {
+        parent::tearDown();
+        global $mockTimeCreate;
+        $mockTimeCreate = false;
     }
 }
